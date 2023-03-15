@@ -33,7 +33,7 @@ https://github.com/adielhorodna/1stYear
 
 
 # Backend API Routes
-![Backend Routes-updated](https://user-images.githubusercontent.com/114962321/225156076-6f754e38-d25a-4eb1-9033-55624e8eb591.png)
+!![Backend Routes-colorupdate](https://user-images.githubusercontent.com/114962321/225198111-22c82609-6ec1-4798-822b-cf2aa122ee7a.png)
 
 
 # Stretch Goals
