@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  resources :scribbles, only: [:index, :create] 
+  resources :posts, only: [:index, :create, :update, :destroy]
+  resources :cards, only: [:index, :show]
+  resources :moms, only: [:show]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
 
-  Rails.application.routes.draw do
     # route to test your configuration
     get '/hello', to: 'application#hello_world'
 
@@ -13,4 +17,4 @@ Rails.application.routes.draw do
       constraints: ->(req) { !req.xhr? && req.format.html? }
   end
 
-end
+
