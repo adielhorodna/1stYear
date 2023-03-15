@@ -10,15 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_15_183224) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_15_220750) do
   create_table "cards", force: :cascade do |t|
     t.integer "title"
-    t.string "image"
+    t.string "image_url"
     t.string "baby_milestone"
-    t.string "baby_tip"
+    t.string "baby_tips"
     t.integer "mom_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "moms", force: :cascade do |t|
@@ -26,22 +24,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_183224) do
     t.string "last"
     t.string "email"
     t.string "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
     t.string "text"
     t.integer "mom_id"
     t.integer "card_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "scribbles", force: :cascade do |t|
     t.integer "mom_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "memory"
   end
 
 end

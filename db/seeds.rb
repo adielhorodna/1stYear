@@ -5,7 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
+# puts "Deleting seeds to then reseed..."
+# Mom.destroy_all
+# Card.destroy_all
+# Post.destroy_all
+# Scribble.destroy_all
 
 # Mom seed data:
 puts "seeding moms"
@@ -16,9 +20,9 @@ Mom.create(first: "Adiel", last: "Eichenstein", email: "adiel.eich@gmail.com", p
 puts "seeding cards"
 12.times do
 Card.create(title:Faker::Number.between(from: 1, to: 12 ),
-image:"https://cdn.shopify.com/s/files/1/0189/2600/products/Safari_Rubber_0-6_2pack_NEW_600x_c48eb175-e013-447c-b469-fc7a61c30443_1000x.jpg?v=1619548128",
+image_url:"https://cdn.shopify.com/s/files/1/0189/2600/products/Safari_Rubber_0-6_2pack_NEW_600x_c48eb175-e013-447c-b469-fc7a61c30443_1000x.jpg?v=1619548128",
 baby_milestone: Faker::TvShows::Suits.quote,
-baby_tip: Faker::TvShows::Friends.quote,
+baby_tips: Faker::TvShows::Friends.quote,
 mom_id: Mom.all.sample.id)
 end
 
@@ -31,7 +35,8 @@ end
 
 # Scribble seed data:
 puts "seeding scribbles"
-Scribble.create(mom_id: Mom.all.sample.id)
-
+3.times do
+Scribble.create(mom_id: Mom.all.sample.id, memory:Faker::TvShows::BrooklynNineNine.quote)
+end
 
 puts "done seeding"
