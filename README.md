@@ -29,11 +29,12 @@ https://github.com/adielhorodna/1stYear
 
 
 # ERD Diagram, Relationships, Validations + Seed Data Example
-![Backend ERD- fixed](https://user-images.githubusercontent.com/114962321/225055797-2f07d981-7c1f-49c5-91dd-b00f2024ed78.png)
+![Backend ERD2 0](https://user-images.githubusercontent.com/114962321/225156002-0bd0cfeb-429f-4f8f-b12a-99026edddfa9.png)
 
 
 # Backend API Routes
-![Backend Routes](https://user-images.githubusercontent.com/114962321/225054649-e3fd3cc0-34d6-410d-891a-2fbc3f62a157.png)
+![Backend Routes-colorupdate](https://user-images.githubusercontent.com/114962321/225198111-22c82609-6ec1-4798-822b-cf2aa122ee7a.png)
+
 
 # Stretch Goals
 1. Have Scribbles be able to update and delete
