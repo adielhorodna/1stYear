@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :scribbles, only: [:index, :create] 
-  resources :posts, only: [:index, :create, :update, :destroy]
+  resources :scribbles, only: [:index, :show, :create] 
+  resources :posts, only: [:index, :show, :create, :update, :destroy]
   resources :cards, only: [:index, :show]
-  resources :moms, only: [:show]
+  resources :moms, only: [:index, :show]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

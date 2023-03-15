@@ -5,23 +5,32 @@ class PostsController < ApplicationController
         render json: Post.all, status: :ok
     end
     
+    # Show one post
+    def show
+        render json: Post.find(params[:id]), status: :ok
+    end 
+    
    
-    # def create
-    #  post= Post.create!(post_params)
-    #  render json: post, status: :created
-    # end
+    def create
+     post = Post.create!(post_params)
+     render json: post, status: :created
+    end
     
     
-    # def update
-    # end
+     def update
+        post = Post.find(params[:id]).update(post_params)
+        render json: post
+     end
 
-    # def destroy
-
-    # end
+    def destroy
+        Post.find(params[:id]).destroy
+    head :no_content
+   
+    end
 
     private 
     def post_params
-        params.permit(:text)
+        params.permit(:text, :mom_id, :card_id)
 
     end
 end
