@@ -18,7 +18,7 @@ class ScribblesController < ApplicationController
        private 
 
  def scribble_params
-    params.permit(:mom_id)
-    # I need to have a text here .
+    params.permit(:mom_id, :memory)
+
  end
 end

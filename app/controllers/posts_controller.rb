@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+rescue_from ActiveRecord::RecordNotFound, with: :post_deleted
     # Shows all Posts
     def index
         render json: Post.all, status: :ok
@@ -32,5 +32,10 @@ class PostsController < ApplicationController
     def post_params
         params.permit(:text, :mom_id, :card_id)
 
+    end
+
+    def post_deleted
+        render json: {"error": "this post does not exist."}, status: :not_found
+    
     end
 end
