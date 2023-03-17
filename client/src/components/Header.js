@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 // The Header component will display 
@@ -10,15 +10,15 @@ function Header() {
   return (
     <div className="header">
       <h1>
-        <Link to="/">1st Year</Link>
+        <NavLink to="/">1st Year</NavLink>
       </h1>
       <nav>
         <ul>
           <li>
-            <Link to="/scribble">Create Scribble</Link>
+            <NavLink to="/scribble">Create Scribble</NavLink>
           </li>
           <li>
-            <Link to="/my_account">My Account</Link>
+            <NavLink to="/my_account">My Account</NavLink>
           </li>
         </ul>
       </nav>

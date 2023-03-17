@@ -2,66 +2,54 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
-
 //Components
-import Cards from './Cards'
-import CreateScribbles from './CreateScribbles';
-import EditPost from './EditPost';
-import Header from './Header';
-import Login from './Login';
-import PersonalAccount from './PersonalAccount';
-import Signup from './Signup';
+import Cards from './components/Cards'
+import CreateScribble from './components/CreateScribble';
+import EditPost from './components/EditPost';
+import Header from './components/Header';
+// import Login from './components/Login';
+import PersonalAccount from './components/PersonalAccount';
+// import Signup from './Signup';
+import CardInfo from './components/CardInfo';
 
-// Initial Fetch All Properties
-useEffect(function ()
-{
-    fetch("http://localhost:9292/properties")
-        .then(function (resp)
-        {
-            return resp.json()
-        })
-        .then(function (data)
-        {
-            console.log(data)
-            return setProperties(data)
-        })
-}, [currentProperty])
-
-
+function App() {
 
 return (
 
     <div className="App">
-    
+
+    <Header/>
+      
 
       <Switch> 
 
-            {/* do i already have this in cards? maybe put it here instead? */}
         <Route exact path = "/">
+            <Cards/>
         </Route>
         
        
         <Route path = "/cards/:id">
-         
+         <CardInfo/>
         </Route>
 
-        <Route path = "edit/posts">
-      
+        <Route path = "/edit/posts">
+      <EditPost/>
         </Route>  
 
 
-        <Route path = "scribbles" >
-         
+        <Route path = "/scribbles" >
+        <CreateScribble/>
         </Route>
         
-        <Route path = "my_account" >
-         
+        <Route path = "/my_account" >
+        <PersonalAccount/>
          </Route>
 
       </Switch>
 
     </div>
   );
+}
 
 export default App
 

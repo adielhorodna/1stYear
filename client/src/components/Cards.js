@@ -1,6 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import CardInfo from './CardInfo'
+import { NavLink } from 'react-router-dom';
+import CardInfo from './CardInfo';
 import React, { useEffect, useState } from 'react';
 
 // should also be importing the create posts?
@@ -26,7 +25,7 @@ function Cards() {
       <ul>
         {cards.map((card) => (
           <li key={card.id}>
-            <Link to={`/cards/${card.id}`}>{card.title}</Link>
+            <NavLink to={`/cards/${card.id}`}>{card.title}</NavLink>
           </li>
         ))}
       </ul>

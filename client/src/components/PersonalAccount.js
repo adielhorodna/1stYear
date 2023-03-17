@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
 import { Link } from 'react-router-dom';
-import CreatePost from './CreatePost';
 import EditPost from './EditPost';
 
 
@@ -35,7 +33,7 @@ function PersonalAccount() {
   const handleCancelEdit = () => {
     setEditingPost(null);
   };
-}
+
   return (
     <div className="my-account">
       <h2>My Account</h2>
@@ -45,14 +43,14 @@ function PersonalAccount() {
           {editingPost && editingPost.id === post.id ? (
             <EditPost post={post} onPostUpdated={handlePostUpdated} onCancelEdit={handleCancelEdit} />
           ) : (
-            <Post post={post} onPostDeleted={handlePostDeleted} onEditPost={handleEditPost} />
+            <EditPost post={post} onPostDeleted={handlePostDeleted} onEditPost={handleEditPost} />
           )}
         </div>
       
       ))}
       </div>
   );
-
+          }
 
 export default PersonalAccount;
 
