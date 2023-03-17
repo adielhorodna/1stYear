@@ -1,58 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
-import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+//React Technologies
+import React, { useState, useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0);
+//Components
+import Cards from './Cards'
+import CreateScribbles from './CreateScribbles';
+import EditPost from './EditPost';
+import Header from './Header';
+import Login from './Login';
+import PersonalAccount from './PersonalAccount';
+import Signup from './Signup';
 
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
+// Initial Fetch All Properties
+useEffect(function ()
+{
+    fetch("http://localhost:9292/properties")
+        .then(function (resp)
+        {
+            return resp.json()
+        })
+        .then(function (data)
+        {
+            console.log(data)
+            return setProperties(data)
+        })
+}, [currentProperty])
 
-//   return (
-//     <div className="App">
-//       <h1>Page Count: {count}</h1>
-//     </div>
-//   );
-// }
+
+
 return (
-  <BrowserRouter>
+
     <div className="App">
-      <Switch>
-        <Route path="/testing">
-          <h1>Test Route</h1>
+    
+
+      <Switch> 
+
+            {/* do i already have this in cards? maybe put it here instead? */}
+        <Route exact path = "/">
         </Route>
-        <Route path="/">
-          <h1>Page Count: {count}</h1>
+        
+       
+        <Route path = "/cards/:id">
+         
         </Route>
+
+        <Route path = "edit/posts">
+      
+        </Route>  
+
+
+        <Route path = "scribbles" >
+         
+        </Route>
+        
+        <Route path = "my_account" >
+         
+         </Route>
+
       </Switch>
+
     </div>
-  </BrowserRouter>
-);
-}
+  );
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+export default App
 
-export default App;
