@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import EditPost from './EditPost';
+import DeletePost from './DeletePost';
 
 
 //Also want a fetch (get) to view the user
@@ -10,6 +11,16 @@ import EditPost from './EditPost';
 function PersonalAccount() {
   const [posts, setPosts] = useState([]);
   const [editingPost, setEditingPost] = useState(null);
+const [scribbles, setScribbles] = useState([])
+  // fetch scribbles:
+ 
+  useEffect(() => {
+    fetch('/scribbles')
+      .then(response => response.json())
+      .then(data => setScribbles(data))
+  }, []);
+
+
 
   useEffect(() => {
     fetch('/posts')
@@ -34,6 +45,8 @@ function PersonalAccount() {
     setEditingPost(null);
   };
 
+
+
   return (
     <div className="my-account">
       <h2>My Account</h2>
@@ -43,11 +56,19 @@ function PersonalAccount() {
           {editingPost && editingPost.id === post.id ? (
             <EditPost post={post} onPostUpdated={handlePostUpdated} onCancelEdit={handleCancelEdit} />
           ) : (
-            <EditPost post={post} onPostDeleted={handlePostDeleted} onEditPost={handleEditPost} />
+            <DeletePost post={post} onPostDeleted={handlePostDeleted} onEditPost={handleEditPost} />
           )}
         </div>
       
       ))}
+      <div>
+  <p> Scribbles </p>
+  {scribbles?.map(scribble => (
+    
+        <p key = {scribble.id} >{scribble.memory}</p>
+      
+  ))}
+</div>
       </div>
   );
           }

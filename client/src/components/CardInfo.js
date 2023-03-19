@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect} from 'react';
+import { useParams } from "react-router-dom"
 // The CardInfo component will display
 //  all the information for a single card.
 //   This component will be imported into 
@@ -9,15 +9,26 @@ import React, { useState } from 'react';
 //The ability to create a new post should 
 //also be on each card. 
 
-  
+
 function CardInfo(props) {
-  const { card } = props;
+  const [card, setCard] = useState({})
+ const params = useParams();
+
+//   {} starts it off as an empty Object, so can later do card.title
   const [showCreatePost, setShowCreatePost] = useState(false);
   const [postText, setPostText] = useState('');
 
   const handlePostCreated = (data) => {
     // handle post creation
   };
+
+// makes  wtvr you wantex. use use state, fetch ) happen right away
+  useEffect(() => {
+    fetch(`/cards/${params.id}`)
+      .then((response) => response.json())
+      .then((data) => setCard(data));
+  }, []);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,21 +37,34 @@ function CardInfo(props) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ text: postText }),
+    //   TO-DO:update to be user id!!
+      body: JSON.stringify({ text: postText, mom_id:4, card_id: Number(params.id)  }),
     })
       .then((response) => response.json())
       .then((data) => {
         handlePostCreated(data);
         setPostText('');
+       
       });
+    
   };
 
   return (
     <div className="card-info">
       <h2>{card.title}</h2>
-      <p>{card.baby_milestones}</p>
-      <p>{card.baby_tips}</p>
-      <img src={card.imageUrl} alt={card.title} />
+      <p>Baby Milestone<p>
+        </p>{card.baby_milestone}</p>
+        <p>Baby Tips<p>
+      </p>{card.baby_tips}</p>
+      <img src={card.imageUrl} alt={card.title} 
+      />
+
+      <div>
+        <p> Posts </p>
+        {card.posts?.map(post => (
+            <div>{post.post}</div>
+        ))}
+      </div>
 
       {showCreatePost && (
         <div className="create-post">

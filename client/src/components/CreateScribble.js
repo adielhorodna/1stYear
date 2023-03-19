@@ -15,7 +15,8 @@ function CreateScribble(props) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ memory: scribbleMemory }),
+    //   TO-DO: change mom id to actual user
+      body: JSON.stringify({ memory: scribbleMemory, mom_id:4}),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -23,6 +24,9 @@ function CreateScribble(props) {
         setScribbleMemory('');
       });
   };
+
+
+
 
   return (
     <div className="create-scribble">

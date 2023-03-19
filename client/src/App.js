@@ -29,7 +29,7 @@ return (
         
        
         <Route path = "/cards/:id">
-         <CardInfo/>
+          <CardInfo />
         </Route>
 
         <Route path = "/edit/posts">
@@ -37,7 +37,7 @@ return (
         </Route>  
 
 
-        <Route path = "/scribbles" >
+        <Route path = "/scribble" >
         <CreateScribble/>
         </Route>
         

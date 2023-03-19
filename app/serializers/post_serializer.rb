@@ -1,4 +1,4 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :text
+  attributes :text, :id
   # id, :text, :mom_id, :card_id
 end

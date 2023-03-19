@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import CardInfo from './CardInfo';
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 // should also be importing the create posts?
 
@@ -26,12 +27,13 @@ function Cards() {
         {cards.map((card) => (
           <li key={card.id}>
             <NavLink to={`/cards/${card.id}`}>{card.title}</NavLink>
+
           </li>
         ))}
       </ul>
     </div>
   );
-}
+        }
 
 export default Cards;
 

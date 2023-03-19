@@ -35,33 +35,11 @@ function EditPost(props) {
 
 
 
-//////////////////////////////
-// fetch delete
-
-
-function DeletePost(props) {
-  const handleDelete = () => {
-    fetch(`/posts/${props.post.id}`, {
-      method: 'DELETE',
-    })
-      .then(() => {
-        props.onPostDeleted(props.post);
-      });
-  };
-
-  return (
-    <div className="delete-post">
-      <p>{props.post.text}</p>
-      <button onClick={handleDelete}>Delete</button>
-      <button onClick={() => props.history.push(`/edit_post/${props.post.id}`)}>Edit</button>
-    </div>
-  );
-}
 
 export default EditPost;
 
 
-//////
+//////!!!
 // Note that the EditPost component has 
 // a props.history.push('/my_account') statement 
 // that will redirect the user to the "MyAccount"
@@ -70,6 +48,6 @@ export default EditPost;
 //   statement that will redirect the 
 //   user to the "EditPost" component when 
 //   the "Edit" button is clicked.
-// !!!!!!!!!!!
+
 
 
