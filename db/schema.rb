@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_15_220750) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_20_155050) do
   create_table "cards", force: :cascade do |t|
     t.integer "title"
     t.string "image_url"
@@ -23,7 +23,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_220750) do
     t.string "first"
     t.string "last"
     t.string "email"
-    t.string "password"
+    t.string "username"
+    t.string "password_digest"
+    t.string "confirm_password"
   end
 
   create_table "posts", force: :cascade do |t|

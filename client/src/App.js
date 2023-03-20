@@ -35,7 +35,8 @@ const [user, setUser] =useState(null)
 // forces user to login first
 if (!user) return <Login/>
 
-
+// TO-DO: 
+// add routes for login and signup 
 return (
 
     // these routes are essentially 

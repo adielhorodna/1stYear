@@ -6,15 +6,15 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 # puts "Deleting seeds to then reseed..."
-# Mom.destroy_all
-# Card.destroy_all
-# Post.destroy_all
-# Scribble.destroy_all
+Mom.destroy_all
+Card.destroy_all
+Post.destroy_all
+Scribble.destroy_all
 
 # Mom seed data:
 puts "seeding moms"
-Mom.create(first: "Adiel", last: "Eichenstein", email: "adiel.eich@gmail.com", password: "abcd")
-
+Mom.create(first: "Adiel", last: "Eichenstein", email: "adiel.eich@gmail.com", username:"Adish", password: "abcd", confirm_password:"abcd")
+Mom.create(first: "Tsuriel", last: "Eichenstein", email: "tsurieli@gmail.com", username:"Tsuri", password: "asdf", confirm_password: "asdf")
 
 # Card seed data:
 puts "seeding cards"
