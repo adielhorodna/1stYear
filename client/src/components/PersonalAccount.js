@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {useHistory} from "react-router-dom"
 import { Link } from 'react-router-dom';
 import EditPost from './EditPost';
 import DeletePost from './DeletePost';
@@ -8,10 +9,15 @@ import DeletePost from './DeletePost';
 //persoanl account info.. but may e thats through login/auth, etc. 
 
 
-function PersonalAccount() {
+function PersonalAccount(props) {
   const [posts, setPosts] = useState([]);
   const [editingPost, setEditingPost] = useState(null);
   const [scribbles, setScribbles] = useState([])
+
+  const user_id = props.user_id;
+  let history = useHistory();
+
+
   // fetch scribbles:
  
   useEffect(() => {
@@ -37,12 +43,16 @@ function PersonalAccount() {
     setPosts(prevPosts => prevPosts.map(p => p.id === updatedPost.id ? updatedPost : p));
   };
 
-  // ue history to navigate to a diff route --> contain component to use to edit post
+  // use history to navigate to a diff route --> contain component to use to edit post
 
-  // pass in the post id, use Params like with card_id.
-  const handleEditPost = (post) => {
-    setEditingPost(post);
-  };
+
+  const handleEditPost = (currentPost) => {
+    setEditingPost(currentPost);
+    history.push(`/edit/posts/${currentPost.id}`)
+   
+};
+
+
 
   const handleCancelEdit = () => {
     setEditingPost(null);
@@ -51,6 +61,7 @@ function PersonalAccount() {
 
 
   return (
+    
     <div className="my-account">
       <h2>My Account</h2>
       <h3>My Posts</h3>

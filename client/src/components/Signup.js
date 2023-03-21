@@ -9,7 +9,7 @@ function Signup({ user,setUser }) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
 
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +29,7 @@ function Signup({ user,setUser }) {
         email,
         username,
         password,
-        confirmPassword: confirmPassword,
+        // confirmPassword: confirmPassword,
       })
       })
     .then(resp => resp.json())

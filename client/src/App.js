@@ -21,14 +21,14 @@ const [showLogin, setShowLogin] = useState(true);
 
   // fetching the current user logged in
 
-  // useEffect(() => {
-  //   // auto-login-->
-  //   fetch("/me").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => setUser(user));
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    // auto-login-->
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
   if (!user) return <Login setUser={setUser} />
   
@@ -43,13 +43,12 @@ return (
 
     <div className="App">
 
-    <Header/>
+    <Header user={user} setUser = {setUser}/>
 
-         <Login path= "/login"
-          user={user} setUser = {setUser}/> 
-{/* 
-        <Signup path = "/signup" />  */}
-        {/* <Welcome />  */}
+        
+        {/* <Signup path = "/signup" 
+           user={user} setUser = {setUser}/>  */}
+      
       <Switch> 
 
 
@@ -65,7 +64,7 @@ return (
         </Route>
 
         <Route path = "/edit/posts">
-      <EditPost/>
+      <EditPost user_id = {user.id}/>
         </Route>  
 
 
@@ -74,7 +73,7 @@ return (
         </Route>
         
         <Route path = "/my_account" >
-        <PersonalAccount/>
+        <PersonalAccount user_id = {user.id}  />
          </Route>
 
       </Switch>

@@ -11,13 +11,14 @@ import { useParams } from "react-router-dom"
 
 
 function CardInfo(props) {
-  const [card, setCard] = useState({})
+ const [card, setCard] = useState({})
+//  {} starts it off as an empty Object, so can later do card.title
  const params = useParams();
 
 
 const user_id = props.user_id;
-console.log(props)
-//   {} starts it off as an empty Object, so can later do card.title
+// console.log(props)
+
   const [showCreatePost, setShowCreatePost] = useState(false);
   const [postText, setPostText] = useState('');
 
@@ -40,10 +41,10 @@ console.log(props)
       headers: {
         'Content-Type': 'application/json',
       },
-    //   TO-DO:update to be user id!!
+
     //params bc card id is already in the url
     
-    // keys have to maytch to backend
+    // keys have to match to backend
       body: JSON.stringify({ text: postText, mom_id: user_id, card_id: Number(params.id)  }),
     })
       .then((response) => response.json())

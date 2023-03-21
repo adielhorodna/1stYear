@@ -7,7 +7,7 @@
 
 function CreateScribble(props) {
   const [scribbleMemory, setScribbleMemory] = useState('');
-//do I make mom id a const in state?
+
 
 const user_id = props.user_id;
 
@@ -18,7 +18,7 @@ const user_id = props.user_id;
       headers: {
         'Content-Type': 'application/json',
       },
-  
+  // mom_id is the key that matches the backend, user_id is the value that could be named whatever I want in props.
       body: JSON.stringify({ memory: scribbleMemory, mom_id: user_id}),
     })
       .then((response) => response.json())
