@@ -1,5 +1,5 @@
 class MomsController < ApplicationController
-skip_before_action :authorize, only: :create, :show
+skip_before_action :authorize, only: [:create, :show]
 
 
 def index
@@ -12,7 +12,8 @@ def show
     
     # created already in the application controller, 
     # so can have access here:
-    render json: @current_user 
+
+    render json: @current_mom 
 end 
 
 # create and login at same time
@@ -25,7 +26,7 @@ end
 private 
 
 def user_params
-    params.permit(:first, :last, :email, :username, :password, :confirm_password)
+    params.permit(:first, :last, :email, :username, :password )
 end 
 
 end

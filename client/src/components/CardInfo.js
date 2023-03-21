@@ -14,6 +14,9 @@ function CardInfo(props) {
   const [card, setCard] = useState({})
  const params = useParams();
 
+
+const user_id = props.user_id;
+console.log(props)
 //   {} starts it off as an empty Object, so can later do card.title
   const [showCreatePost, setShowCreatePost] = useState(false);
   const [postText, setPostText] = useState('');
@@ -38,7 +41,10 @@ function CardInfo(props) {
         'Content-Type': 'application/json',
       },
     //   TO-DO:update to be user id!!
-      body: JSON.stringify({ text: postText, mom_id: mom.id, card_id: Number(params.id)  }),
+    //params bc card id is already in the url
+    
+    // keys have to maytch to backend
+      body: JSON.stringify({ text: postText, mom_id: user_id, card_id: Number(params.id)  }),
     })
       .then((response) => response.json())
       .then((data) => {

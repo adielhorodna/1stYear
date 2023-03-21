@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 //user, setUser, bc thats the prop in login component.
 
-function Signup({ onLogin }) {
+function Signup({ user,setUser }) {
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [email, setEmail] = useState("");
@@ -30,17 +30,21 @@ function Signup({ onLogin }) {
         username,
         password,
         confirmPassword: confirmPassword,
+      })
+      })
+    .then(resp => resp.json())
+    .then (data => setUser(data))
       
-      }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => onLogin(user));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
   }
+  //   .then((r) => {
+  //     setIsLoading(false);
+  //     if (r.ok) {
+  //       r.json().then((user) => onLogin(user));
+  //     } else {
+  //       r.json().then((err) => setErrors(err.errors));
+  //     }
+  //   });
+  // }
 
   return (
 
@@ -48,6 +52,7 @@ function Signup({ onLogin }) {
 
 <input className = "signup"
   type="text"
+  placeholder="First Name"
   id="first"
   autoComplete="off"
   value={first}
@@ -57,6 +62,7 @@ function Signup({ onLogin }) {
 
 <input className = "signup"
   type="text"
+  placeholder="Last Name"
   id="last"
   autoComplete="off"
   value={last}
@@ -66,6 +72,7 @@ function Signup({ onLogin }) {
 
 <input className = "signup"
   type="text"
+  placeholder="Username"
   id="username"
   autoComplete="off"
   value={username}
@@ -75,6 +82,7 @@ function Signup({ onLogin }) {
 
 <input className = "signup"
   type="text"
+  placeholder="Email"
   id="email"
   autoComplete="off"
   value={email}
@@ -84,22 +92,26 @@ function Signup({ onLogin }) {
 
 <input className = "signup"
   type="password"
+  placeholder="Password"
   id="password"
   value={password}
   onChange={(e) => setPassword(e.target.value)}
   autoComplete="current-password"
 />
 
-<input className = "signup"
+{/* <input className = "signup"
   type="password"
+  placeholder="Confirm Password"
   id="confirm_password"
   value={confirmPassword}
   onChange={(e) => setConfirmPassword(e.target.value)}
   autoComplete="current-password"
-/>
+/> */}
 
 
-<button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+<button type="submit"> Sign Up
+  {/* {isLoading ? "Loading..." : "Sign Up"} */}
+</button>
 
 {/*    
 {errors.map((err) => (

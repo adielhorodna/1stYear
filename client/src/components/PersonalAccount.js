@@ -37,6 +37,9 @@ function PersonalAccount() {
     setPosts(prevPosts => prevPosts.map(p => p.id === updatedPost.id ? updatedPost : p));
   };
 
+  // ue history to navigate to a diff route --> contain component to use to edit post
+
+  // pass in the post id, use Params like with card_id.
   const handleEditPost = (post) => {
     setEditingPost(post);
   };

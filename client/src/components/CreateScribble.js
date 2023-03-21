@@ -9,6 +9,8 @@ function CreateScribble(props) {
   const [scribbleMemory, setScribbleMemory] = useState('');
 //do I make mom id a const in state?
 
+const user_id = props.user_id;
+
   const handleSubmit = (event) => {
     event.preventDefault();
     fetch('/scribbles', {
@@ -17,7 +19,7 @@ function CreateScribble(props) {
         'Content-Type': 'application/json',
       },
   
-      body: JSON.stringify({ memory: scribbleMemory, mom_id: mom.id}),
+      body: JSON.stringify({ memory: scribbleMemory, mom_id: user_id}),
     })
       .then((response) => response.json())
       .then((data) => {

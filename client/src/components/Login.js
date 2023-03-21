@@ -1,80 +1,44 @@
-import React, { useState } from "react";
-import {useHistory} from "react-router-dom"
+import { useState } from "react";
+import LoginForm from "../components/LoginForm";
+import Signup from "./Signup";
 
-
-function Login({ user,setUser }) {
-  // const [loginDetails, setLoginDetails] = useState ({username: "", password: ""})
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  let history = useHistory();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setIsLoading(true);
-    fetch("/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    })
-.then(resp => resp.json())
-.then (data => setUser(data))
-
-// push them to this component once logged in:
-//(navigate instead of history.)
-history.push("/")
-
-}
-// brooke^
-// from recipe lab:
-//   }
-//     .then((r) => {
-//       setIsLoading(false);
-//       if (r.ok) {
-//         r.json().then((user) => onLogin(user));
-//       } else {
-//         r.json().then((err) => setErrors(err.errors));
-//       }
-//     });
-//   }
+function Login({ user, setUser }) {
+  const [showLogin, setShowLogin] = useState(true);
 
   return (
-   <form onSubmit={handleSubmit}>
-   
-  <input className = "login"
-    type="text"
-    placeholder="Username"
-    id="username"
-    autoComplete="off"
-    // value={loginDetails.username}
-    value={username}
-    onChange={(e) => setUsername(e.target.value)}
-/>
 
-  <input className = "login"
-    type="password"
-    placeholder = "Password"
-    id="password"
-    autoComplete="current-password"
-    // value={loginDetails.password}
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-  />
+    <div>
+ {showLogin ? (
+        <>
+          <LoginForm user={user} setUser= {setUser} />
+  
+          <p>
+            Don't have an account? &nbsp;
+            <button onClick={() => setShowLogin(false)}>
+              Sign Up
+            </button>
+          </p>
+        </>
+      ) : (
+        <>
+          <Signup user={user} setUser= {setUser}  />
 
+          <p>
+            Already have an account? &nbsp;
+            <button onClick={() => setShowLogin(true)}>
+              Log In
+            </button>
+          </p>
+        </>
 
-  <button type="submit"> Login
-    {isLoading ? "Loading..." : "Login"}
-  </button>
-
-  {/* {errors.map((err) => (
-    <Error key={err}>{err}</Error>
-  ))}
-*/}
-</form>
-);
+      
+  )}
+</div>
+  );
 }
 
-export default Login;
+
+
+     
+        
+export default Login

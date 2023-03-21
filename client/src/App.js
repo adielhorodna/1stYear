@@ -8,29 +8,34 @@ import Cards from './components/Cards'
 import CreateScribble from './components/CreateScribble';
 import EditPost from './components/EditPost';
 import Header from './components/Header';
-import Login from './components/Login';
+import Login from './components/LoginForm';
 import PersonalAccount from './components/PersonalAccount';
 import Signup from './components/Signup';
 import CardInfo from './components/CardInfo';
-import Welcome from './components/Welcome'
+import LoginForm from './components/LoginForm';
 
 function App() {
    
 const [user, setUser] =useState(null)
-
+const [showLogin, setShowLogin] = useState(true);
 
   // fetching the current user logged in
-  useEffect(() => {
-    // auto-login-->
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
 
+  // useEffect(() => {
+  //   // auto-login-->
+  //   fetch("/me").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => setUser(user));
+  //     }
+  //   });
+  // }, []);
+
+  if (!user) return <Login setUser={setUser} />
+  
+ 
  
 return (
+
 
     // these routes are essentially 
     // creating links to our components 
@@ -39,19 +44,24 @@ return (
     <div className="App">
 
     <Header/>
-      
-        <Login user={user} setUser = {setUser}/>
+
+         <Login path= "/login"
+          user={user} setUser = {setUser}/> 
+{/* 
+        <Signup path = "/signup" />  */}
+        {/* <Welcome />  */}
       <Switch> 
 
-       
+
+
 
         <Route exact path = "/">
             <Cards/>
         </Route>
         
        
-        <Route path = "/cards/:id">
-          <CardInfo />
+        <Route path = "/cards/:id" >
+          <CardInfo user_id = {user.id}/>
         </Route>
 
         <Route path = "/edit/posts">
@@ -60,7 +70,7 @@ return (
 
 
         <Route path = "/scribble" >
-        <CreateScribble/>
+        <CreateScribble user_id = {user.id}/>
         </Route>
         
         <Route path = "/my_account" >
@@ -70,7 +80,7 @@ return (
       </Switch>
 
     </div>
-  );
+);
 }
 
 export default App
