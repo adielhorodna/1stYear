@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   # custom routes:
   post "/login", to: "sessions#create"
-  destroy "/logout", to: "sessions#destroy"
+  delete "/logout", to: "sessions#destroy"
   post "/signup", to: "moms#create"
   get "/me", to: "users#show"
   

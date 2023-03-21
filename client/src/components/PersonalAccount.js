@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import EditPost from './EditPost';
 import DeletePost from './DeletePost';
 
-
+// TO_DO:
 //Also want a fetch (get) to view the user
 //persoanl account info.. but may e thats through login/auth, etc. 
 
@@ -11,7 +11,7 @@ import DeletePost from './DeletePost';
 function PersonalAccount() {
   const [posts, setPosts] = useState([]);
   const [editingPost, setEditingPost] = useState(null);
-const [scribbles, setScribbles] = useState([])
+  const [scribbles, setScribbles] = useState([])
   // fetch scribbles:
  
   useEffect(() => {

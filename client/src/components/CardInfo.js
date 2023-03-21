@@ -22,7 +22,7 @@ function CardInfo(props) {
     // handle post creation
   };
 
-// makes  wtvr you wantex. use use state, fetch ) happen right away
+// makes  wtvr you want, ex.  usestate, fetch,  happen right away
   useEffect(() => {
     fetch(`/cards/${params.id}`)
       .then((response) => response.json())
@@ -38,7 +38,7 @@ function CardInfo(props) {
         'Content-Type': 'application/json',
       },
     //   TO-DO:update to be user id!!
-      body: JSON.stringify({ text: postText, mom_id:4, card_id: Number(params.id)  }),
+      body: JSON.stringify({ text: postText, mom_id: mom.id, card_id: Number(params.id)  }),
     })
       .then((response) => response.json())
       .then((data) => {

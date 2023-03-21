@@ -10,33 +10,26 @@ import EditPost from './components/EditPost';
 import Header from './components/Header';
 import Login from './components/Login';
 import PersonalAccount from './components/PersonalAccount';
-import Signup from './Signup';
+import Signup from './components/Signup';
 import CardInfo from './components/CardInfo';
+import Welcome from './components/Welcome'
 
 function App() {
-    // TO DO : swtich user to mom
+   
 const [user, setUser] =useState(null)
 
 
- // auto-login!!-->
+  // fetching the current user logged in
+  useEffect(() => {
+    // auto-login-->
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
-
-// useEffect(() => {
-//     // auto-login
-//     fetch("/me").then((r) => {
-//       if (r.ok) {
-//         r.json().then((user) => setUser(user));
-//       }
-//     });
-//   }, []);
-
-//   if (!user) return <Login onLogin={setUser} />;
-
-// forces user to login first
-if (!user) return <Login/>
-
-// TO-DO: 
-// add routes for login and signup 
+ 
 return (
 
     // these routes are essentially 

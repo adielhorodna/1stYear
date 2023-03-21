@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import {useHistory} from "react-router-dom"
-// import { Button, Error, Input, FormField, Label } from "../styles";
+
 
 function Login({ user,setUser }) {
+  // const [loginDetails, setLoginDetails] = useState ({username: "", password: ""})
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -41,39 +42,39 @@ history.push("/")
 //   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <FormField>
-        <Label htmlFor="username">Username</Label>
-        <Input
-          type="text"
-          id="username"
-          autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </FormField>
-      <FormField>
-        <Label htmlFor="password">Password</Label>
-        <Input
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </FormField>
-      <FormField>
-        <Button variant="fill" color="primary" type="submit"> Login
-          {isLoading ? "Loading..." : "Login"}
-        </Button>
-      </FormField>
-      <FormField>
-        {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))}
-      </FormField>
-    </form>
-  );
+   <form onSubmit={handleSubmit}>
+   
+  <input className = "login"
+    type="text"
+    placeholder="Username"
+    id="username"
+    autoComplete="off"
+    // value={loginDetails.username}
+    value={username}
+    onChange={(e) => setUsername(e.target.value)}
+/>
+
+  <input className = "login"
+    type="password"
+    placeholder = "Password"
+    id="password"
+    autoComplete="current-password"
+    // value={loginDetails.password}
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+  />
+
+
+  <button type="submit"> Login
+    {isLoading ? "Loading..." : "Login"}
+  </button>
+
+  {/* {errors.map((err) => (
+    <Error key={err}>{err}</Error>
+  ))}
+*/}
+</form>
+);
 }
 
 export default Login;

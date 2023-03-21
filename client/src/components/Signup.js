@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-// import { Button, Error, Input, FormField, Label, Textarea } from "../styles";
 
 
 //user, setUser, bc thats the prop in login component.
 
-// //TO-DO:
-// customize to my own signup I created in backend.
-
-function SignUpForm({ onLogin }) {
+function Signup({ onLogin }) {
+  const [first, setFirst] = useState("");
+  const [last, setLast] = useState("");
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [bio, setBio] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,11 +24,13 @@ function SignUpForm({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        first,
+        last,
+        email,
         username,
         password,
-        password_confirmation: passwordConfirmation,
-        image_url: imageUrl,
-        bio,
+        confirmPassword: confirmPassword,
+      
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -43,65 +43,73 @@ function SignUpForm({ onLogin }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <FormField>
-        <Label htmlFor="username">Username</Label>
-        <Input
-          type="text"
-          id="username"
-          autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </FormField>
-      <FormField>
-        <Label htmlFor="password">Password</Label>
-        <Input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          autoComplete="current-password"
-        />
-      </FormField>
-      <FormField>
-        <Label htmlFor="password">Password Confirmation</Label>
-        <Input
-          type="password"
-          id="password_confirmation"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-          autoComplete="current-password"
-        />
-      </FormField>
-      {/* <FormField>
-        <Label htmlFor="imageUrl">Profile Image</Label>
-        <Input
-          type="text"
-          id="imageUrl"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-        />
-      </FormField> */}
-      <FormField>
-        <Label htmlFor="bio">Bio</Label>
-        <Textarea
-          rows="3"
-          id="bio"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        />
-      </FormField>
-      <FormField>
-        <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
-      </FormField>
-      <FormField>
-        {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))}
-      </FormField>
-    </form>
-  );
+
+<form onSubmit={handleSubmit}>
+
+<input className = "signup"
+  type="text"
+  id="first"
+  autoComplete="off"
+  value={first}
+  onChange={(e) => setFirst(e.target.value)}
+/>
+
+
+<input className = "signup"
+  type="text"
+  id="last"
+  autoComplete="off"
+  value={last}
+  onChange={(e) => setLast(e.target.value)}
+/>
+
+
+<input className = "signup"
+  type="text"
+  id="username"
+  autoComplete="off"
+  value={username}
+  onChange={(e) => setUsername(e.target.value)}
+/>
+
+
+<input className = "signup"
+  type="text"
+  id="email"
+  autoComplete="off"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+/>
+
+
+<input className = "signup"
+  type="password"
+  id="password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  autoComplete="current-password"
+/>
+
+<input className = "signup"
+  type="password"
+  id="confirm_password"
+  value={confirmPassword}
+  onChange={(e) => setConfirmPassword(e.target.value)}
+  autoComplete="current-password"
+/>
+
+
+<button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+
+{/*    
+{errors.map((err) => (
+  <Error key={err}>{err}</Error>
+))} */}
+
+</form>
+);
 }
 
-export default SignUpForm;
+
+
+export default Signup;

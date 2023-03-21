@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
 # LOGIN:
 
 def create 
-    user = Mom.find_by(username: params[:username])
+    mom = Mom.find_by(username: params[:username])
     if user&.authenticate (params[:password])
         session[:mom_id] = mom.id
-        render json: user 
+        render json: mom 
 
     else
         render json: {error: {"Invalid username or password"}}, 

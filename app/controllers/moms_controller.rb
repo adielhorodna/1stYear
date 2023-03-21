@@ -17,9 +17,9 @@ end
 
 # create and login at same time
 def create
-user = user.create!(user_params)
+mom = Mom.create!(user_params)
 session[:mom_id] = mom.id
-render json: user, status: :created
+render json: mom, status: :created
 end 
 
 private 
