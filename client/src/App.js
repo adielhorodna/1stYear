@@ -8,7 +8,7 @@ import Cards from './components/Cards'
 import CreateScribble from './components/CreateScribble';
 import EditPost from './components/EditPost';
 import Header from './components/Header';
-import Login from './components/LoginForm';
+import Login from './components/Login';
 import PersonalAccount from './components/PersonalAccount';
 import Signup from './components/Signup';
 import CardInfo from './components/CardInfo';
@@ -21,14 +21,14 @@ const [showLogin, setShowLogin] = useState(true);
 
   // fetching the current user logged in
 
-  useEffect(() => {
-    // auto-login-->
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   // auto-login-->
+  //   fetch("/me").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => setUser(user));
+  //     }
+  //   });
+  // }, []);
 
   if (!user) return <Login setUser={setUser} />
   
@@ -63,7 +63,7 @@ return (
           <CardInfo user_id = {user.id}/>
         </Route>
 
-        <Route path = "/edit/posts">
+        <Route path = "/edit/posts/:id">
       <EditPost user_id = {user.id}/>
         </Route>  
 

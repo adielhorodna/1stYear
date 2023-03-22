@@ -11,7 +11,7 @@ function Signup({ user,setUser }) {
   const [password, setPassword] = useState("");
   // const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   function handleSubmit(e) {
@@ -32,8 +32,15 @@ function Signup({ user,setUser }) {
         // confirmPassword: confirmPassword,
       })
       })
-    .then(resp => resp.json())
+    .then(resp => {
+      if(resp.status === 200) {
+        return resp.json()
+      } else {
+        throw new Error('Something went wrong')
+      }
+    })
     .then (data => setUser(data))
+    .catch(error =>  setErrors(error.message))
       
   }
   //   .then((r) => {
@@ -49,6 +56,7 @@ function Signup({ user,setUser }) {
   return (
 
 <form onSubmit={handleSubmit}>
+  {errors && <p>{errors}</p>}
 
 <input className = "signup"
   type="text"

@@ -6,7 +6,7 @@ function LoginForm({ user,setUser }) {
   // const [loginDetails, setLoginDetails] = useState ({username: "", password: ""})
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   let history = useHistory();
 
@@ -20,8 +20,15 @@ function LoginForm({ user,setUser }) {
       },
       body: JSON.stringify({ username, password }),
     })
-.then(resp => resp.json())
-.then (data => setUser(data))
+    .then(resp => {
+      if(resp.status === 200) {
+        return resp.json()
+      } else {
+        throw new Error('Something went wrong')
+      }
+    })
+    .then (data => setUser(data))
+    .catch(error =>  setErrors(error.message))
 
 // push them to this component once logged in:
 //(navigate instead of history.)
@@ -43,7 +50,7 @@ history.push("/")
 
   return (
    <form onSubmit={handleSubmit}>
-   
+   {errors && <p>{errors}</p>}
   <input className = "login"
     type="text"
     placeholder="Username"

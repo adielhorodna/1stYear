@@ -27,7 +27,6 @@ function PersonalAccount(props) {
   }, []);
 
 
-
   useEffect(() => {
     fetch('/posts')
       .then(response => response.json())
@@ -35,28 +34,29 @@ function PersonalAccount(props) {
   }, []);
 
   const handlePostDeleted = (post) => {
+    // todo: delete in the backend so that it is deleted also on refresh
     setPosts(prevPosts => prevPosts.filter(p => p.id !== post.id));
   };
 
-  const handlePostUpdated = (updatedPost) => {
-    setEditingPost(null);
-    setPosts(prevPosts => prevPosts.map(p => p.id === updatedPost.id ? updatedPost : p));
-  };
+  // const handlePostUpdated = (updatedPost) => {
+    // setEditingPost(null);
+    // setPosts(prevPosts => prevPosts.map(p => p.id === updatedPost.id ? updatedPost : p));
+  // };
 
   // use history to navigate to a diff route --> contain component to use to edit post
 
 
   const handleEditPost = (currentPost) => {
-    setEditingPost(currentPost);
+    // setEditingPost(currentPost);
     history.push(`/edit/posts/${currentPost.id}`)
    
 };
 
 
 
-  const handleCancelEdit = () => {
-    setEditingPost(null);
-  };
+  // const handleCancelEdit = () => {
+  //   setEditingPost(null);
+  // };
 
 
 
@@ -67,11 +67,12 @@ function PersonalAccount(props) {
       <h3>My Posts</h3>
       {posts.map(post => (
         <div key={post.id}>
-          {editingPost && editingPost.id === post.id ? (
+          {/* {editingPost && editingPost.id === post.id ? (
             <EditPost post={post} onPostUpdated={handlePostUpdated} onCancelEdit={handleCancelEdit} />
-          ) : (
-            <DeletePost post={post} onPostDeleted={handlePostDeleted} onEditPost={handleEditPost} />
-          )}
+          ) : ( */}
+              <DeletePost post={post} onPostDeleted={handlePostDeleted} />
+              <button onClick={() => handleEditPost(post)}>Edit</button>
+          {/* )} */}
         </div>
       
       ))}

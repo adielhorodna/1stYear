@@ -4,7 +4,6 @@ import {useHistory} from "react-router-dom"
 
 
 function EditPost(props) {
-  console.log(props)
 
   // const [postText, setPostText] = useState([]);
   const [postText, setPostText] = useState("");
@@ -13,8 +12,6 @@ function EditPost(props) {
 
   const user_id = props.user_id;
   let history = useHistory();
-
-  // console.log(props)
  
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,14 +21,10 @@ function EditPost(props) {
       headers: {
         'Content-Type': 'application/json',
       },
-      // body: JSON.stringify({ text: postText }),
-  
       body: JSON.stringify({ text: postText, mom_id: user_id, card_id: Number(params.id)  }),
     })
       .then((response) => response.json())
       .then((data) => {
-    //  onPostUpdated(data);
-        props.onPostUpdated(data);
         history.push(`/my_account`);
       });
   };

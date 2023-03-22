@@ -10,12 +10,11 @@ function DeletePost(props) {
           props.onPostDeleted(props.post);
         });
     };
-  console.log(props.onEditPost)
+  // console.log(props.onEditPost)
     return (
       <div className="delete-post">
         <p>{props.post.text}</p>
         <button onClick={handleDelete}>Delete</button>
-        <button onClick={props.onEditPost}>Edit</button>
       </div>
     );
   }
