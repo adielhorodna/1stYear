@@ -6,7 +6,7 @@ import DeletePost from './DeletePost';
 
 // TO_DO:
 //Also want a fetch (get) to view the user
-//persoanl account info.. but may e thats through login/auth, etc. 
+//persoanl account info.. but maybe thats through login/auth, etc. 
 
 
 function PersonalAccount(props) {
@@ -34,7 +34,6 @@ function PersonalAccount(props) {
   }, []);
 
   const handlePostDeleted = (post) => {
-    // todo: delete in the backend so that it is deleted also on refresh
     setPosts(prevPosts => prevPosts.filter(p => p.id !== post.id));
   };
 
@@ -54,12 +53,6 @@ function PersonalAccount(props) {
 
 
 
-  // const handleCancelEdit = () => {
-  //   setEditingPost(null);
-  // };
-
-
-
   return (
     
     <div className="my-account">
@@ -67,6 +60,7 @@ function PersonalAccount(props) {
       <h3>My Posts</h3>
       {posts.map(post => (
         <div key={post.id}>
+          {/* this only does in state, I need in backend so when refresh it perrsists. */}
           {/* {editingPost && editingPost.id === post.id ? (
             <EditPost post={post} onPostUpdated={handlePostUpdated} onCancelEdit={handleCancelEdit} />
           ) : ( */}

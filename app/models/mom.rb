@@ -7,6 +7,6 @@ class Mom < ApplicationRecord
     
 validates :first, :last, :email, :username, presence: true
 validates :password, length: { minimum: 3 }
-validates :password, confirmation: true
-validates :password_confirmation, presence: true
+# validates :password, confirmation: true
+# validates :password_confirmation, presence: true
 end

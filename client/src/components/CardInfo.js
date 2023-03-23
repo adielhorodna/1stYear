@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { useParams } from "react-router-dom"
+
 // The CardInfo component will display
 //  all the information for a single card.
 //   This component will be imported into 
@@ -17,14 +18,18 @@ function CardInfo(props) {
 
 
 const user_id = props.user_id;
-// console.log(props)
+
 
   const [showCreatePost, setShowCreatePost] = useState(false);
   const [postText, setPostText] = useState('');
 
   const handlePostCreated = (data) => {
     // handle post creation
+
+    //set state here
   };
+
+
 
 // makes  wtvr you want, ex.  usestate, fetch,  happen right away
   useEffect(() => {
@@ -51,7 +56,6 @@ const user_id = props.user_id;
       .then((data) => {
         handlePostCreated(data);
         setPostText('');
-       
       });
     
   };

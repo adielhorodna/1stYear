@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import {useHistory} from "react-router-dom"
 
 //user, setUser, bc thats the prop in login component.
 
@@ -12,12 +13,15 @@ function Signup({ user,setUser }) {
   // const [confirmPassword, setConfirmPassword] = useState("");
 
   const [errors, setErrors] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
+let history = useHistory();
+
+
 
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    setIsLoading(true);
+    // setIsLoading(true);
     fetch("/signup", {
       method: "POST",
       headers: {
@@ -29,11 +33,11 @@ function Signup({ user,setUser }) {
         email,
         username,
         password,
-        // confirmPassword: confirmPassword,
+      //  confirmation_password:confirmPassword,
       })
       })
     .then(resp => {
-      if(resp.status === 200) {
+      if(resp.status === 201) {
         return resp.json()
       } else {
         throw new Error('Something went wrong')
@@ -41,17 +45,9 @@ function Signup({ user,setUser }) {
     })
     .then (data => setUser(data))
     .catch(error =>  setErrors(error.message))
-      
+    history.push("/")
   }
-  //   .then((r) => {
-  //     setIsLoading(false);
-  //     if (r.ok) {
-  //       r.json().then((user) => onLogin(user));
-  //     } else {
-  //       r.json().then((err) => setErrors(err.errors));
-  //     }
-  //   });
-  // }
+
 
   return (
 
@@ -106,20 +102,18 @@ function Signup({ user,setUser }) {
   onChange={(e) => setPassword(e.target.value)}
   autoComplete="current-password"
 />
-
-{/* <input className = "signup"
+{/* 
+ <input className = "signup"
   type="password"
   placeholder="Confirm Password"
   id="confirm_password"
   value={confirmPassword}
   onChange={(e) => setConfirmPassword(e.target.value)}
   autoComplete="current-password"
-/> */}
+/>  */}
 
 
-<button type="submit"> Sign Up
-  {/* {isLoading ? "Loading..." : "Sign Up"} */}
-</button>
+<button type="submit"> Sign Up </button>
 
 {/*    
 {errors.map((err) => (

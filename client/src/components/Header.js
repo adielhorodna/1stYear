@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+// import { ChakraProvider } from '@chakra-ui/react';
+// import { Stack, Box, Button } from '@chakra-ui/react'
 
 // The Header component will display 
 // the website title and links to 
@@ -17,6 +18,7 @@ function Header({user, setUser}) {
   }
 
   return (
+
     <div className="header">
       <h1>
         <NavLink to="/">1st Year</NavLink>
@@ -41,7 +43,8 @@ function Header({user, setUser}) {
 }
 
 
-
-
-
 export default Header;
+
+
+
+

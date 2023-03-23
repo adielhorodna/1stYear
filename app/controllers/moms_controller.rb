@@ -1,5 +1,5 @@
 class MomsController < ApplicationController
-skip_before_action :authorize, only: [:create, :show]
+skip_before_action :authorize, only: [:create]
 
 
 def index
@@ -26,7 +26,7 @@ end
 private 
 
 def user_params
-    params.permit(:first, :last, :email, :username, :password )
+    params.permit(:first, :last, :email, :username, :password)
 end 
 
 end

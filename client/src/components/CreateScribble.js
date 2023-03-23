@@ -1,5 +1,5 @@
  import React, { useState } from 'react';
-
+ import {useHistory} from "react-router-dom"
 //  The CreateScribble component will allow users 
 //  to create a new scribble (text input) that 
 //  will be displayed on their MyAccount page. 
@@ -7,9 +7,16 @@
 
 function CreateScribble(props) {
   const [scribbleMemory, setScribbleMemory] = useState('');
-
+// console.log(props)
+  // I set state to an empty string ^ to clear out form, but  not working 
 
 const user_id = props.user_id;
+let history = useHistory();
+
+// const handleScribbleCreated = (data) => {
+//   // handle scribble creation
+// };
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,6 +32,7 @@ const user_id = props.user_id;
       .then((data) => {
         props.onScribbleCreated(data);
         setScribbleMemory('');
+        history.push(`/my_account`);
       });
   };
 

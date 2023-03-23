@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import {useHistory} from "react-router-dom"
 
 
+// localStorage.setItem('user', JSON.stringify(data));
+
+// const storedUser = JSON.parse(localStorage.getItem('user'));
+// if (storedUser) {
+//   setUser(storedUser);
+// }
+
+
 function LoginForm({ user,setUser }) {
   // const [loginDetails, setLoginDetails] = useState ({username: "", password: ""})
   const [username, setUsername] = useState("");
@@ -27,6 +35,7 @@ function LoginForm({ user,setUser }) {
         throw new Error('Something went wrong')
       }
     })
+    // doesnt open the app if theres a login error:
     .then (data => setUser(data))
     .catch(error =>  setErrors(error.message))
 
@@ -35,18 +44,6 @@ function LoginForm({ user,setUser }) {
 history.push("/")
 
 }
-// brooke^
-// from recipe lab:
-//   }
-//     .then((r) => {
-//       setIsLoading(false);
-//       if (r.ok) {
-//         r.json().then((user) => onLogin(user));
-//       } else {
-//         r.json().then((err) => setErrors(err.errors));
-//       }
-//     });
-//   }
 
   return (
    <form onSubmit={handleSubmit}>
@@ -73,13 +70,9 @@ history.push("/")
 
 
   <button type="submit"> Login
-    {/* {isLoading ? "Loading..." : "Login"} */}
   </button>
 
-  {/* {errors.map((err) => (
-    <Error key={err}>{err}</Error>
-  ))}
-*/}
+  
 </form>
 );
 }

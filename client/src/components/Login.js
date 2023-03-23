@@ -1,12 +1,15 @@
 import { useState } from "react";
 import LoginForm from "../components/LoginForm";
 import Signup from "./Signup";
+// import { ChakraProvider } from '@chakra-ui/react'
+
+
 
 function Login({ user, setUser }) {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
-
+  
     <div>
  {showLogin ? (
         <>
@@ -34,6 +37,7 @@ function Login({ user, setUser }) {
       
   )}
 </div>
+
   );
 }
 

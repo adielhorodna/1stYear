@@ -13,8 +13,8 @@ Scribble.destroy_all
 
 # Mom seed data:
 puts "seeding moms"
-Mom.create(first: "Adiel", last: "Eichenstein", email: "adiel.eich@gmail.com", username:"Adish", password: "abcd", confirm_password:"abcd")
-Mom.create(first: "Tsuriel", last: "Eichenstein", email: "tsurieli@gmail.com", username:"Tsuri", password: "asdf", confirm_password: "asdf")
+Mom.create(first: "Adiel", last: "Eichenstein", email: "adiel.eich@gmail.com", username:"Adish", password: "abcd", password_confirmation:"abcd")
+Mom.create(first: "Tsuriel", last: "Eichenstein", email: "tsurieli@gmail.com", username:"Tsuri", password: "asdf", password_confirmation: "asdf")
 
 # Card seed data:
 puts "seeding cards"

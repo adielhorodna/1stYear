@@ -29,12 +29,6 @@ function EditPost(props) {
       });
   };
 
-  // // just added:
-  // const handlePostUpdatedl = () => {
-  //   props.onCancelEdit();
-  //   history.push(`/my_account`);
-  // }
-
 
   return (
     <div className="edit-post">
@@ -57,14 +51,14 @@ function EditPost(props) {
 export default EditPost;
 
 
-//////!!!
-// Note that the EditPost component has 
+// The EditPost component has 
 // a props.history.push('/my_account') statement 
 // that will redirect the user to the "MyAccount"
 //  component after the post has been updated. 
 
 
-//  The Post component has a props.history.push(/edit_post/${props.post.id}) --NOT CURRENTLY WORKING
+//  The Personal Account component has a 
+// history.push(`/edit/posts/${currentPost.id}`
 //   statement that will redirect the 
 //   user to the "EditPost" component when 
 //   the "Edit" button is clicked.

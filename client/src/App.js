@@ -21,14 +21,14 @@ const [showLogin, setShowLogin] = useState(true);
 
   // fetching the current user logged in
 
-  // useEffect(() => {
-  //   // auto-login-->
-  //   fetch("/me").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => setUser(user));
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    // auto-login-->
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
   if (!user) return <Login setUser={setUser} />
   
