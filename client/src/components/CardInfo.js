@@ -28,14 +28,14 @@ function CardInfo(props) {
 //  setting the state here so that the state updates every time there is a new post created.
 //  I had all my posts displaying as card.posts, so adding the post to the card state.
 
-
-
     const handlePostCreated = (newPost) => {
     setCard(prevCard => ({
     ...prevCard,
     posts: [
     ...prevCard.posts,
-    {post: newPost.text, ...newPost}
+    // {post: newPost.text, username: newPost.mom.username, ...newPost},
+    {post: newPost.text, ...newPost},
+  
   ]}))
   console.log(newPost)
     }
@@ -83,7 +83,11 @@ function CardInfo(props) {
       <div>
         <p> Posts </p>
         {card.posts?.map(post => (
-            <div>{post.post}</div>
+
+            <div> 
+           {post.post}
+           {/* {post.username} */}
+            </div>
         ))}
       </div>
 
