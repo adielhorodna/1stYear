@@ -45,17 +45,12 @@ return (
 
     <Header user={user} setUser = {setUser}/>
 
-        
-        {/* <Signup path = "/signup" 
-           user={user} setUser = {setUser}/>  */}
-      
+          
       <Switch> 
-
-
-
 
         <Route exact path = "/">
             <Cards/>
+            {/* <Cards user_id = {user.id}/> */}
         </Route>
         
        

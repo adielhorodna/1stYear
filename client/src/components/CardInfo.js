@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { useParams } from "react-router-dom"
+import PersonalAccount from './PersonalAccount';
 
 // The CardInfo component will display
 //  all the information for a single card.
@@ -12,30 +13,38 @@ import { useParams } from "react-router-dom"
 
 
 function CardInfo(props) {
+// console.log(props);
  const [card, setCard] = useState({})
+ const [showCreatePost, setShowCreatePost] = useState(false);
+ const [postText, setPostText] = useState('');
+ const [posts, setPosts] = useState([]);
+
 //  {} starts it off as an empty Object, so can later do card.title
  const params = useParams();
+ const user_id = props.user_id;
 
-
-const user_id = props.user_id;
-
-
-  const [showCreatePost, setShowCreatePost] = useState(false);
-  const [postText, setPostText] = useState('');
-
-  const handlePostCreated = (data) => {
-    // handle post creation
-
-    //set state here
-  };
+//  //set state here.
+//  redirected to this function in the .then of the posts fetch.
+//  setting the state here so that the state updates every time there is a new post created.
+//  I had all my posts displaying as card.posts, so adding the post to the card state.
 
 
 
-// makes  wtvr you want, ex.  usestate, fetch,  happen right away
+    const handlePostCreated = (newPost) => {
+    setCard(prevCard => ({
+    ...prevCard,
+    posts: [
+    ...prevCard.posts,
+    {post: newPost.text, ...newPost}
+  ]}))
+  console.log(newPost)
+    }
+
+
   useEffect(() => {
     fetch(`/cards/${params.id}`)
       .then((response) => response.json())
-      .then((data) => setCard(data));
+      .then (setCard);
   }, []);
 
 
@@ -48,7 +57,6 @@ const user_id = props.user_id;
       },
 
     //params bc card id is already in the url
-    
     // keys have to match to backend
       body: JSON.stringify({ text: postText, mom_id: user_id, card_id: Number(params.id)  }),
     })
@@ -57,6 +65,8 @@ const user_id = props.user_id;
         handlePostCreated(data);
         setPostText('');
       });
+
+      // have the username of post writer appear with their post^^^
     
   };
 
@@ -67,9 +77,9 @@ const user_id = props.user_id;
         </p>{card.baby_milestone}</p>
         <p>Baby Tips<p>
       </p>{card.baby_tips}</p>
-      <img src={card.imageUrl} alt={card.title} 
+      <img src={card.image_url} alt={card.title} 
       />
-
+     {/* displaying all my posts: */}
       <div>
         <p> Posts </p>
         {card.posts?.map(post => (
@@ -83,7 +93,9 @@ const user_id = props.user_id;
           <form onSubmit={handleSubmit}>
             <label>
               Post Text:
-              <input type="text" value={postText} onChange={(event) => setPostText(event.target.value)} />
+              <input type="text" 
+              value={postText} 
+              onChange={(e) => setPostText(e.target.value)} />
             </label>
             <button type="submit">Submit</button>
           </form>

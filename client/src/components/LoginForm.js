@@ -2,25 +2,17 @@ import React, { useState } from "react";
 import {useHistory} from "react-router-dom"
 
 
-// localStorage.setItem('user', JSON.stringify(data));
-
-// const storedUser = JSON.parse(localStorage.getItem('user'));
-// if (storedUser) {
-//   setUser(storedUser);
-// }
-
-
 function LoginForm({ user,setUser }) {
   // const [loginDetails, setLoginDetails] = useState ({username: "", password: ""})
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+
   let history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
-    setIsLoading(true);
+    // setIsLoading(true);
     fetch("/login", {
       method: "POST",
       headers: {
@@ -40,7 +32,6 @@ function LoginForm({ user,setUser }) {
     .catch(error =>  setErrors(error.message))
 
 // push them to this component once logged in:
-//(navigate instead of history.)
 history.push("/")
 
 }
@@ -53,7 +44,6 @@ history.push("/")
     placeholder="Username"
     id="username"
     autoComplete="off"
-    // value={loginDetails.username}
     value={username}
     onChange={(e) => setUsername(e.target.value)}
 />
@@ -63,7 +53,6 @@ history.push("/")
     placeholder = "Password"
     id="password"
     autoComplete="current-password"
-    // value={loginDetails.password}
     value={password}
     onChange={(e) => setPassword(e.target.value)}
   />

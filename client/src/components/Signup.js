@@ -37,6 +37,7 @@ let history = useHistory();
       })
       })
     .then(resp => {
+      // 201 bc thats the status code for created
       if(resp.status === 201) {
         return resp.json()
       } else {

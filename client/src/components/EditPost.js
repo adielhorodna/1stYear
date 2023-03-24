@@ -4,8 +4,6 @@ import {useHistory} from "react-router-dom"
 
 
 function EditPost(props) {
-
-  // const [postText, setPostText] = useState([]);
   const [postText, setPostText] = useState("");
 
   const params = useParams();
@@ -15,7 +13,7 @@ function EditPost(props) {
  
   const handleSubmit = (event) => {
     event.preventDefault();
-    // fetch(`/posts/${props.post.id}`, {
+  
       fetch(`/posts/${params.id}`, {
       method: 'PATCH',
       headers: {
@@ -38,7 +36,6 @@ function EditPost(props) {
           Post Text:
           <input type="text" value={postText} onChange={(event) => setPostText(event.target.value)} />
         </label>
-    
         <button type="submit">Save</button>
       </form>
     </div>

@@ -10,6 +10,7 @@ import DeletePost from './DeletePost';
 
 
 function PersonalAccount(props) {
+
   const [posts, setPosts] = useState([]);
   const [editingPost, setEditingPost] = useState(null);
   const [scribbles, setScribbles] = useState([])
@@ -19,14 +20,13 @@ function PersonalAccount(props) {
 
 
   // fetch scribbles:
- 
   useEffect(() => {
     fetch('/scribbles')
       .then(response => response.json())
       .then(data => setScribbles(data))
   }, []);
 
-
+  // fetch posts:
   useEffect(() => {
     fetch('/posts')
       .then(response => response.json())
