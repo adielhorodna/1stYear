@@ -37,14 +37,6 @@ function PersonalAccount(props) {
     setPosts(prevPosts => prevPosts.filter(p => p.id !== post.id));
   };
 
-  // const handlePostUpdated = (updatedPost) => {
-    // setEditingPost(null);
-    // setPosts(prevPosts => prevPosts.map(p => p.id === updatedPost.id ? updatedPost : p));
-  // };
-
-  // use history to navigate to a diff route --> contain component to use to edit post
-
-
   const handleEditPost = (currentPost) => {
     // setEditingPost(currentPost);
     history.push(`/edit/posts/${currentPost.id}`)
@@ -60,10 +52,6 @@ function PersonalAccount(props) {
       <h3>My Posts</h3>
       {posts.map(post => (
         <div key={post.id}>
-          {/* this only does in state, I need in backend so when refresh it perrsists. */}
-          {/* {editingPost && editingPost.id === post.id ? (
-            <EditPost post={post} onPostUpdated={handlePostUpdated} onCancelEdit={handleCancelEdit} />
-          ) : ( */}
               <DeletePost post={post} onPostDeleted={handlePostDeleted} />
               <button onClick={() => handleEditPost(post)}>Edit</button>
           {/* )} */}

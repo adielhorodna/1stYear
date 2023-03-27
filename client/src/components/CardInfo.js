@@ -102,7 +102,7 @@ function CardInfo(props) {
         <Box>
           <p>Posts</p>
           {card.posts?.map((post) => (
-            <div key={post.id}>{post.post} {post.username} </div>
+            <div key={post.id}>  @{post.username} {post.post} </div>
           ))}
         </Box>
         <Divider />

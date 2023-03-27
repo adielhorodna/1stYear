@@ -1,5 +1,7 @@
  import React, { useState } from 'react';
  import {useHistory} from "react-router-dom"
+
+ import { Box,Button,FormControl,FormLabel,Textarea,} from '@chakra-ui/react';
 //  The CreateScribble component will allow users 
 //  to create a new scribble (text input) that 
 //  will be displayed on their MyAccount page. 
@@ -7,16 +9,11 @@
 
 function CreateScribble(props) {
   const [scribbleMemory, setScribbleMemory] = useState('');
-// console.log(props)
+
   // I set state to an empty string ^ to clear out form, but  not working 
 
 const user_id = props.user_id;
 let history = useHistory();
-
-// const handleScribbleCreated = (data) => {
-//   // handle scribble creation
-// };
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -40,16 +37,19 @@ let history = useHistory();
 
 
   return (
-    <div className="create-scribble">
-      <h2>Scribble Away</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Scribble Text:
-          <input type="text" value={scribbleMemory} onChange={(event) => setScribbleMemory(event.target.value)} />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+<Box maxW="xl" m="auto">
+      <FormControl>
+        <Textarea
+          value={scribbleMemory}
+          onChange={(event) => setScribbleMemory(event.target.value)}
+          placeholder="Scribble on your wall..."
+          size="lg"
+        />
+      </FormControl>
+      <Button mt={4} bgColor="#FF878E" color="white"  _active={{ bg: '#555555'}}onClick={handleSubmit}>
+        Scribble
+      </Button>
+    </Box>
   );
 }
 export default CreateScribble;
