@@ -1,10 +1,12 @@
 import React, { useState, useEffect} from 'react';
 import { useParams } from "react-router-dom"
 // import PersonalAccount from './PersonalAccount';
-import { SimpleGrid } from '@chakra-ui/react';
-import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider } from '@chakra-ui/react'
-import { Input } from '@chakra-ui/react'
-import { Button, ButtonGroup } from '@chakra-ui/react'
+// import { SimpleGrid } from '@chakra-ui/react';
+// import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider } from '@chakra-ui/react'
+
+// import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Box, Flex, Button, FormControl, FormLabel, Input, Stack, Divider } from '@chakra-ui/react';
+import { Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverHeader, PopoverBody } from '@chakra-ui/react';
 
 // The CardInfo component will display
 //  all the information for a single card.
@@ -75,115 +77,102 @@ function CardInfo(props) {
   };
 
   return (
-  //   <div className="card-info">
-  //   <h2>{card.title}</h2>
-  //   <p>Baby Milestone<p>
-  //     </p>{card.baby_milestone}</p>
-  //     <p>Baby Tips<p>
-  //   </p>{card.baby_tips}</p>
-  //   <img src={card.image_url} alt={card.title} 
-  //   />
-  //  {/* displaying all my posts: */}
-  //   <div>
-  //     <p> Posts </p>
-  //     {card.posts?.map(post => (
+  <Flex align="center" justify="center" height="100vh">
+  <Box maxW="800px" borderWidth="1px" borderRadius="lg" overflow="hidden" mx="auto">
+    <Box position="relative" height="400px">
+      <img src={card.image_url} alt={card.title} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+      <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" textAlign="center">
+        <h2 style={{ fontSize: "7rem", color: "white" }}> Month {card.title}</h2>
+      </Box>
 
-  //         <div> 
-  //        {post.post}
-  //        {/* {post.username} */}
-  //         </div>
-  //     ))}
-  //   </div>
-
-<Card maxW='sm'>
-  <CardBody>
-    <Image
-    src={card.image_url}
-    alt={card.title} 
-    borderRadius='lg'
-    />
-    <Stack mt='6' spacing='3'>
-      <Heading size='md'>{card.title}</Heading>
-      <Text> BABY MILESTONES </Text>
-      <Text> {card.baby_milestone}</Text>
-      <Divider />
-      <Text> BABY TIPS </Text>
-      <Text> {card. baby_tips}</Text>
-    </Stack>
-  </CardBody>
-  <Divider />
-  <Text> POSTS </Text>
-  {card.posts?.map(post => (
-   <Text>{post.post}</Text>
-  ))}
-    <Input placeholder='Your Post Here' />
-  <Text>Create a Post</Text>
-
-  
-<Button variant='outline' colorScheme='pink' type="submit" size='md' 
- onClick={() => setShowCreatePost(true)}>
-         Post
-        
-      </Button>
-
-
-  <CardFooter>
-      
-  </CardFooter>
-</Card>
-
-
-
-
-
-
-
-
-    // <div className="card-info">
-    //   <h2>{card.title}</h2>
-    //   <p>Baby Milestone<p>
-    //     </p>{card.baby_milestone}</p>
-    //     <p>Baby Tips<p>
-    //   </p>{card.baby_tips}</p>
-    //   <img src={card.image_url} alt={card.title} 
-    //   />
-    //  {/* displaying all my posts: */}
-    //   <div>
-    //     <p> Posts </p>
-    //     {card.posts?.map(post => (
-
-    //         <div> 
-    //        {post.post}
-    //        {/* {post.username} */}
-    //         </div>
-    //     ))}
-    //   </div>
-
-    //   {showCreatePost && (
-    //     <div className="create-post">
-    //       <h2>Create a Post</h2>
-    //       <form onSubmit={handleSubmit}>
-    //         <label>
-    //           Post Text:
-    //           <input type="text" 
-    //           value={postText} 
-    //           onChange={(e) => setPostText(e.target.value)} />
-    //         </label>
-    //         <button type="submit">Submit</button>
-    //       </form>
-    //     </div>
-    //   )}
-
-    //   {!showCreatePost && (
-    //     <div className="new-post">
-    //       <h3>Create New Post</h3>
-    //       <button onClick={() => setShowCreatePost(true)}>Create Post</button>
-    //     </div>
-    //   )}
-    // </div>
-    // // </SimpleGrid>
+    </Box>
+    <Box p="6">
+      <Stack spacing="4">
+        <Divider />
+        <Box>
+          <p>Baby Milestones</p>
+          <p>{card.baby_milestone}</p>
+        </Box>
+        <Divider />
+        <Box>
+          <p>Baby Tips</p>
+          <p>{card.baby_tips}</p>
+        </Box>
+        <Divider />
+        <Box>
+          <p>Posts</p>
+          {card.posts?.map((post) => (
+            <div key={post.id}>{post.post}</div>
+          ))}
+        </Box>
+        <Divider />
+        <form onSubmit={handleSubmit}>
+          <FormLabel>Create a Post</FormLabel>
+          <Input type="text" value={postText} onChange={(e) => setPostText(e.target.value)} placeholder="Your Post Here" />
+          <Button type="submit" mt="4" bgColor="#FF878E" color="white">
+            Post
+          </Button>
+        </form>
+      </Stack>
+    </Box>
+  </Box>
+</Flex>
   );
-}
+          }
+          
+
+
+
+
+
+
+//     <div className="card-info">
+//       <h2>{card.title}</h2>
+//       <p>Baby Milestone<p>
+//         </p>{card.baby_milestone}</p>
+//         <p>Baby Tips<p>
+//       </p>{card.baby_tips}</p>
+//       <img src={card.image_url} alt={card.title}  */}
+//       />
+//      {/* displaying all my posts: */}
+{/* //       <div>
+//         <p> Posts </p>
+//         {card.posts?.map(post => ( */}
+{/* 
+//             <div> 
+//            {post.post}
+//            {/* {post.username} */}
+//             </div>
+//         ))}
+//       </div> */}
+
+//       {showCreatePost && (
+//         <div className="create-post">
+//           <h2>Create a Post</h2>
+//           <form onSubmit={handleSubmit}>
+//             <label>
+//               Post Text:
+//               <input type="text" 
+//               value={postText} 
+//               onChange={(e) => setPostText(e.target.value)} />
+//             </label>
+//             <button type="submit">Submit</button>
+//           </form>
+//         </div>
+//       )}
+
+//       {!showCreatePost && (
+//         <div className="new-post">
+//           <h3>Create New Post</h3>
+//           <button onClick={() => setShowCreatePost(true)}>Create Post</button>
+//         </div>
+//       )}
+//     </div>
+
+//   );
+// }
+
+
 
 export default CardInfo;
 
