@@ -1,5 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :text, :mom_id, :card_id, :id
+  attributes :text, :mom_id, :card_id, :id, :username 
   
   # id, :text, :mom_id, :card_id
 
@@ -14,6 +14,10 @@ class PostSerializer < ActiveModel::Serializer
      
   #   end
   # end
+
+  def username 
+    return object.mom.username
+  end
 
 
 end

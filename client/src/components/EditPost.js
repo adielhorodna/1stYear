@@ -14,12 +14,12 @@ function EditPost(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
   
-      fetch(`/posts/${params.id}`, {
+      fetch(`/posts/${params.post_id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ text: postText, mom_id: user_id, card_id: Number(params.id)  }),
+      body: JSON.stringify({ text: postText, mom_id: user_id }),
     })
       .then((response) => response.json())
       .then((data) => {

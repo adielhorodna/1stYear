@@ -58,7 +58,7 @@ return (
           <CardInfo user_id = {user.id}/>
         </Route>
 
-        <Route path = "/edit/posts/:id">
+        <Route path = "/edit/posts/:post_id">
       <EditPost user_id = {user.id}/>
         </Route>  
 

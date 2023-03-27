@@ -18,7 +18,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :post_deleted
     
     
      def update
-        post = Post.find(params[:id]).update(post_params)
+        post = Post.find(params[:id]).update!(post_params)
         render json: post
      end
 
