@@ -9,7 +9,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :post_deleted
     def show
         render json: Post.find(params[:id]), status: :ok
     end 
-    
+
    
     def create
      post = Post.create!(post_params)
