@@ -38,14 +38,19 @@ function PersonalAccount(props) {
   }, []);
 
   const handlePostDeleted = (post) => {
+    fetch(`/posts/${post.id}`, {
+      method: 'DELETE',
+    })
     setPosts(prevPosts => prevPosts.filter(p => p.id !== post.id));
   };
+
 
   const handleEditPost = (currentPost) => {
     // setEditingPost(currentPost);
     history.push(`/edit/posts/${currentPost.id}`)
    
 };
+
 
 
 

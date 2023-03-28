@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   post "/signup", to: "moms#create"
   get "/me", to: "moms#show"
   
+
+  # create a custom route to show users personal posts and scribbles:
+  
+
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

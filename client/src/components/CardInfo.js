@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"
 // import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider } from '@chakra-ui/react'
 
 // import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Box, Flex, Button, FormControl, FormLabel, Input, Stack, Divider } from '@chakra-ui/react';
+import { Box, Flex, Button, FormControl, FormLabel, Input, Stack, Divider, Heading, Text } from '@chakra-ui/react';
 import { Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverHeader, PopoverBody } from '@chakra-ui/react';
 
 // The CardInfo component will display
@@ -90,22 +90,26 @@ function CardInfo(props) {
       <Stack spacing="4">
         <Divider />
         <Box>
-          <p>Baby Milestones</p>
+          <Heading as="h2" size="md" mb="4">Baby Milestones</Heading>
           <p>{card.baby_milestone}</p>
         </Box>
-        <Divider />
+     
         <Box>
-          <p>Baby Tips</p>
+        <Heading as="h2" size="md" mb="4">Baby Tips</Heading>
           <p>{card.baby_tips}</p>
         </Box>
         <Divider />
         <Box>
-          <p>Posts</p>
-          {card.posts?.map((post) => (
-            <div key={post.id}>  @{post.username} {post.post} </div>
-          ))}
-        </Box>
-        <Divider />
+                <Heading as="h2" size="md" mb="4">Posts</Heading>
+                {card.posts?.map((post) => (
+                  <Box key={post.id} mb="4">
+                    <Text fontSize="sm" color="gray.500">@{post.username}</Text>
+                    <Text>{post.post}</Text>
+                    <Divider />
+                  </Box>
+                ))}
+              </Box>
+   
         <form onSubmit={handleSubmit}>
           <FormLabel>Create a Post</FormLabel>
           <Input type="text" value={postText} onChange={(e) => setPostText(e.target.value)} placeholder="Your Post Here" />
@@ -124,7 +128,7 @@ function CardInfo(props) {
 
 
 
-
+////////////////
 
 //     <div className="card-info">
 //       <h2>{card.title}</h2>
