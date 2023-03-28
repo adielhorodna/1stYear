@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import EditPost from './EditPost';
 import DeletePost from './DeletePost';
 
+import {Box,Button,Center,Flex,Heading,IconButton,Spacer,Text,} from '@chakra-ui/react';
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
+import { Tabs, TabList, TabPanels, Tab, TabPanel} from '@chakra-ui/react'
+
 // TO_DO:
 //Also want a fetch (get) to view the user
 //persoanl account info.. but maybe thats through login/auth, etc. 
@@ -46,29 +50,55 @@ function PersonalAccount(props) {
 
 
   return (
-    
-    <div className="my-account">
-      <h2>My Account</h2>
-      <h3>My Posts</h3>
-      {posts.map(post => (
-        <div key={post.id}>
-              <DeletePost post={post} onPostDeleted={handlePostDeleted} />
-              <button onClick={() => handleEditPost(post)}>Edit</button>
-          {/* )} */}
-        </div>
-      
-      ))}
-      <div>
-  <p> Scribbles </p>
-  {scribbles?.map(scribble => (
-    
-        <p key = {scribble.id} >{scribble.memory}</p>
-      
-  ))}
-</div>
-      </div>
+    <Box mx="auto" maxW="800px">
+    <Tabs>
+  <TabList>
+    <Tab  color="black" _active={{ color: 'black'}}>All my posts</Tab>
+    <Tab  color="black" _active={{ color: 'black'}}>All my scribbles</Tab>
+  </TabList> 
+
+  <TabPanels>
+    <TabPanel>
+      <Box mb="4">
+        {posts.map(post => (
+          <Box key={post.id} bg="gray.50" borderRadius="md" p="4" my="4">
+            <Flex alignItems="center">
+              <Text as="h4" size="md" mr="2">{post.text}</Text>
+              <Spacer />
+              <IconButton
+                icon={<DeleteIcon />}
+                variant="ghost"
+                colorScheme="gray"
+                onClick={() => handlePostDeleted(post)}
+                aria-label="Delete post"
+              />
+              <IconButton
+                icon={<EditIcon />}
+                variant="ghost"
+                colorScheme="gray"
+                onClick={() => handleEditPost(post)}
+                aria-label="Edit post"
+              />
+            </Flex>
+            <Text>{post.content}</Text>
+          </Box>
+        ))}
+      </Box>
+    </TabPanel>
+    <TabPanel>
+      <Box>
+        {scribbles.map(scribble => (
+          <Box key={scribble.id} bg="gray.50" borderRadius="md" p="4" my="4">
+            <Text>{scribble.memory}</Text>
+          </Box>
+        ))}
+      </Box>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
+</Box>
   );
-          }
+        }
 
 export default PersonalAccount;
 

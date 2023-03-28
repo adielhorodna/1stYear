@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from "react-router-dom"
 import {useHistory} from "react-router-dom"
 
+import {Box,Button,FormControl,FormLabel,Input,Textarea, Heading, Text} from "@chakra-ui/react";
 
 function EditPost(props) {
   const [postText, setPostText] = useState("");
@@ -29,18 +30,52 @@ function EditPost(props) {
 
 
   return (
-    <div className="edit-post">
-      <h2>Edit Post</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Post Text:
-          <input type="text" value={postText} onChange={(event) => setPostText(event.target.value)} />
-        </label>
-        <button type="submit">Save</button>
-      </form>
-    </div>
-  );
+
+<Box maxW="xl" m="auto" mt="8">
+      <FormControl>
+      <Heading as="h2" size="md" mb="4"> Edit Your Post </Heading>
+
+      <Textarea
+          value={postText}
+          onChange={(event) => setPostText(event.target.value)}
+          placeholder="Type your new post here..."
+          size="lg"
+        />
+      </FormControl>
+      <Button mt={4} bgColor="#FF878E" color="white"  _active={{ bg: '#555555'}}onClick={handleSubmit}>
+        Edit
+      </Button>
+    </Box>
+);
 }
+
+
+
+
+
+   
+      
+  
+
+
+
+
+
+
+
+
+//     <div className="edit-post">
+//       <h2>Edit Post</h2>
+//       <form onSubmit={handleSubmit}>
+//         <label>
+//           Post Text:
+//           <input type="text" value={postText} onChange={(event) => setPostText(event.target.value)} />
+//         </label>
+//         <button type="submit">Save</button>
+//       </form>
+//     </div>
+//   );
+// }
 
 
 

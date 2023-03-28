@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import {useHistory} from "react-router-dom"
 
+import {Box,Button,FormControl,FormLabel,Input,Stack,Text,Heading} from "@chakra-ui/react";
+
+
 
 function LoginForm({ user,setUser }) {
   // const [loginDetails, setLoginDetails] = useState ({username: "", password: ""})
@@ -37,33 +40,72 @@ history.push("/")
 }
 
   return (
-   <form onSubmit={handleSubmit}>
-   {errors && <p>{errors}</p>}
-  <input className = "login"
-    type="text"
-    placeholder="Username"
-    id="username"
-    autoComplete="off"
-    value={username}
-    onChange={(e) => setUsername(e.target.value)}
-/>
 
-  <input className = "login"
-    type="password"
-    placeholder = "Password"
-    id="password"
-    autoComplete="current-password"
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-  />
+    <Box my="8" textAlign="center">
+    <form onSubmit={handleSubmit}>
+      {errors && <Text color="red.500">{errors}</Text>}
+      <Heading as="h1" size="md" mb="4">Log In to 1st Year</Heading>
+      <Stack spacing="3">
+        <FormControl>
+          <Input
+            type="text"
+            placeholder="Username"
+            id="username"
+            autoComplete="off"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </FormControl>
 
-
-  <button type="submit"> Login
-  </button>
-
-  
-</form>
+        <FormControl>
+          <Input
+            type="password"
+            placeholder="Password"
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </FormControl>
+        <Button type="submit" mt={4} bgColor="#FF878E" color="white" 
+        _hover={{ bg: '#C94757' }}
+        _active={{ bg: '#555555'}}
+        >
+        Log In
+      </Button>
+      </Stack>
+    </form>
+  </Box>
 );
 }
+
+//    <form onSubmit={handleSubmit}>
+//    {errors && <p>{errors}</p>}
+//   <input className = "login"
+//     type="text"
+//     placeholder="Username"
+//     id="username"
+//     autoComplete="off"
+//     value={username}
+//     onChange={(e) => setUsername(e.target.value)}
+// />
+
+//   <input className = "login"
+//     type="password"
+//     placeholder = "Password"
+//     id="password"
+//     autoComplete="current-password"
+//     value={password}
+//     onChange={(e) => setPassword(e.target.value)}
+//   />
+
+
+//   <button type="submit"> Login
+//   </button>
+
+  
+// </form>
+// );
+// }
 
 export default LoginForm;
