@@ -20,7 +20,7 @@ const [user, setUser] =useState(null)
 const [showLogin, setShowLogin] = useState(true);
 
   // fetching the current user logged in
-
+// console.log(user)
   useEffect(() => {
     // auto-login-->
     fetch("/me").then((r) => {

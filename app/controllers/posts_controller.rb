@@ -7,7 +7,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :post_deleted
     
     # Show one post
     def show
-        render json: Post.find(params[:id]), status: :ok
+        render json: Post.where(mom_id: params[:id]), status: :ok
     end 
 
    

@@ -8,10 +8,6 @@ import {Box,Button,Center,Flex,Heading,IconButton,Spacer,Text,} from '@chakra-ui
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import { Tabs, TabList, TabPanels, Tab, TabPanel} from '@chakra-ui/react'
 
-// TO_DO:
-//Also want a fetch (get) to view the user
-//persoanl account info.. but maybe thats through login/auth, etc. 
-
 
 function PersonalAccount(props) {
 
@@ -23,19 +19,21 @@ function PersonalAccount(props) {
   let history = useHistory();
 
 
-  // fetch scribbles:
   useEffect(() => {
-    fetch('/scribbles')
+      // fetch scribbles:
+    fetch(`/scribbles/${user_id}`)
       .then(response => response.json())
       .then(data => setScribbles(data))
-  }, []);
 
-  // fetch posts:
-  useEffect(() => {
-    fetch('/posts')
+     // fetch posts:
+    fetch(`/posts/${user_id}`)
       .then(response => response.json())
       .then(data => setPosts(data))
+
   }, []);
+// because the fetch is not within a .then its going to run first^
+
+  
 
   const handlePostDeleted = (post) => {
     fetch(`/posts/${post.id}`, {
@@ -55,6 +53,8 @@ function PersonalAccount(props) {
 
 
   return (
+
+
     <Box mx="auto" maxW="800px">
     <Tabs>
   <TabList>
@@ -102,6 +102,7 @@ function PersonalAccount(props) {
   </TabPanels>
 </Tabs>
 </Box>
+
   );
         }
 

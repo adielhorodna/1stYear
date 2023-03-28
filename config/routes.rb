@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   post "/signup", to: "moms#create"
   get "/me", to: "moms#show"
-  
-
+  get "/myposts", to: "posts#index"
+  get "myscribbles", to: "scribbles#index"
   # create a custom route to show users personal posts and scribbles:
-  
+
 
 
 

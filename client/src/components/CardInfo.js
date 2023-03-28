@@ -71,8 +71,6 @@ function CardInfo(props) {
         handlePostCreated(data);
         setPostText('');
       });
-
-      // have the username of post writer appear with their post^^^
     
   };
 
@@ -88,7 +86,7 @@ function CardInfo(props) {
     </Box>
     <Box p="6">
       <Stack spacing="4">
-        <Divider />
+        {/* <Divider /> */}
         <Box>
           <Heading as="h2" size="md" mb="4">Baby Milestones</Heading>
           <p>{card.baby_milestone}</p>

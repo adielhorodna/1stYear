@@ -5,9 +5,9 @@ class ScribblesController < ApplicationController
         render json: Scribble.all, status: :ok
     end
     
-    
+    # .where returns all (not one) that match, in an array
     def show
-        render json: Scribble.find(params[:id]), status: :ok
+        render json: Scribble.where(mom_id: params[:id]), status: :ok
     end 
     
     def create
