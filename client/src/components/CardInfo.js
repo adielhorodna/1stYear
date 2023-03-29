@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"
 // import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider } from '@chakra-ui/react'
 
 // import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Box, Flex, Button, FormControl, FormLabel, Input, Stack, Divider, Heading, Text } from '@chakra-ui/react';
+import { Box, Flex, Button, Grid, FormControl, FormLabel, Input, Stack, Divider, Heading, Text } from '@chakra-ui/react';
 import { Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverHeader, PopoverBody } from '@chakra-ui/react';
 
 // The CardInfo component will display
@@ -73,60 +73,59 @@ function CardInfo(props) {
       });
     
   };
+  return(
 
-  return (
   <Flex align="center" justify="center" height="100vh">
-  <Box maxW="800px" borderWidth="1px" borderRadius="lg" overflow="hidden" mx="auto">
-    <Box position="relative" height="400px">
-      <img src={card.image_url} alt={card.title} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
-      <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" textAlign="center">
-        <h2 style={{ fontSize: "7rem", color: "white" }}> Month {card.title}</h2>
-      </Box>
+   <Box maxW="800px" borderWidth="1px" borderRadius="lg" overflow="hidden" mx="auto" border="none">
+     <Box position="relative" height="400px" mb="8">
+       <img src={card.image_url} alt={card.title} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+       <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" textAlign="center">
+        <h2 style={{ fontSize: "5rem", color: "white" }}> Month {card.title}</h2>
+       </Box>
 
-    </Box>
-    <Box p="6">
-      <Stack spacing="4">
-        {/* <Divider /> */}
-        <Box>
-          <Heading as="h2" size="md" mb="4">Baby Milestones</Heading>
-          <p>{card.baby_milestone}</p>
-        </Box>
+     </Box>
+     <Box p="0">
+       <Stack spacing="4">
+         {/* <Divider /> */}
+         <Box>
+           <Heading as="h2" size="md" mb="4">Baby Milestones</Heading>
+           <p> {card.baby_milestone}</p>
+         </Box>
      
-        <Box>
-        <Heading as="h2" size="md" mb="4">Baby Tips</Heading>
-          <p>{card.baby_tips}</p>
-        </Box>
-        <Divider />
-        <Box>
-                <Heading as="h2" size="md" mb="4">Posts</Heading>
-                {card.posts?.map((post) => (
-                  <Box key={post.id} mb="4">
-                    <Text fontSize="sm" color="gray.500">@{post.username}</Text>
-                    <Text>{post.post}</Text>
-                    <Divider />
-                  </Box>
-                ))}
-              </Box>
+         <Box>
+         <Heading as="h2" size="md" mb="4">Baby Tips</Heading>
+           <p>{card.baby_tips}</p>
+         </Box>
+         <Divider />
+         <Box>
+                 <Heading as="h2" size="md" mb="4">Posts</Heading>
+                 {card.posts?.map((post) => (
+                   <Box key={post.id} mb="4" >
+                     <Text fontSize="sm" color="gray.500">@{post.username}</Text>
+                     <Text>{post.post}</Text>
+                     <Divider mt="5" mb="5"/>
+                   </Box>
+                 ))}
+               </Box>
    
-        <form onSubmit={handleSubmit}>
-          <FormLabel>Create a Post</FormLabel>
-          <Input type="text" value={postText} onChange={(e) => setPostText(e.target.value)} placeholder="Your Post Here" />
-          <Button type="submit" mt="4" bgColor="#FF878E" color="white">
-            Post
-          </Button>
-        </form>
-      </Stack>
-    </Box>
-  </Box>
-</Flex>
-  );
-          }
+         <form onSubmit={handleSubmit}>
+           <FormLabel>Create a Post</FormLabel>
+           <Input type="text" value={postText} onChange={(e) => setPostText(e.target.value)} placeholder="Your Post Here" />
+           <Button type="submit" mt="4" bgColor="#FF878E" color="white">
+             Post
+           </Button>
+         </form>
+       </Stack>
+     </Box>
+   </Box>
+ </Flex>
+   );
+ }
           
 
 
 
 
-////////////////
 
 //     <div className="card-info">
 //       <h2>{card.title}</h2>

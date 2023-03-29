@@ -68,8 +68,9 @@ history.push("/")
           />
         </FormControl>
         <Button type="submit" mt={4} bgColor="#FF878E" color="white" 
-        _hover={{ bg: '#C94757' }}
+        // _hover={{ bg: '#C94757' }}
         _active={{ bg: '#555555'}}
+      
         >
         Log In
       </Button>
