@@ -43,7 +43,7 @@ function EditPost(props) {
         />
       </FormControl>
       <Button mt={4} bgColor="#FF878E" color="white"  _active={{ bg: '#555555'}}onClick={handleSubmit}>
-        Edit
+        Save
       </Button>
     </Box>
 );

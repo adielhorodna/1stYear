@@ -130,7 +130,7 @@ let history = useHistory();
           <Heading  as="h1" size="md" mb="4"> 
        
          
-            Sign up to 1st Year
+            Sign Up to 1st Year
           </Heading>
           <form onSubmit={handleSubmit}>
             {errors && <Text color="red">{errors}</Text>}
