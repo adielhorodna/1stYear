@@ -22,14 +22,15 @@ https://github.com/adielhorodna/1stYear
 # ERD Diagram + Relationships
 ![Backend ERD-newest](https://user-images.githubusercontent.com/114962321/228722331-7a68b88c-3037-40ec-8d25-516d6bac8840.png)
 
-# Component Tree + Client Routes
+# Component Tree with Client Routes
 ![component tree-newest](https://user-images.githubusercontent.com/114962321/228721756-b8f327ac-9148-46cd-b7a3-b59f7c1990dc.png)
 
 # Wireframe 
-![wireframe](https://user-images.githubusercontent.com/114962321/225041542-fe7d5220-c28c-4690-bd0c-818646b79a7c.png)
+![wireframe-newest](https://user-images.githubusercontent.com/114962321/228723826-d12fd356-b516-4332-a81d-6b008c879fa1.png)
 
 # Backend API Routes
-![Backend Routes-colorupdate](https://user-images.githubusercontent.com/114962321/225198111-22c82609-6ec1-4798-822b-cf2aa122ee7a.png)
+![Backend Routes-newest](https://user-images.githubusercontent.com/114962321/228723211-69dc6848-3788-4ce8-b80b-32816380c8e2.png)
+
 
 # Trello Board
 https://trello.com/b/Dhn5Sv1d/phase-5-project
